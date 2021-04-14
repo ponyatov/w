@@ -3,4 +3,4 @@
 
 (c) Dmitry Ponyatov <dponyatov@gmail.com> 2020 MIT
 
-github: https://github.com/ponyatov/metaLworks
+github: https://github.com/ponyatov/w
