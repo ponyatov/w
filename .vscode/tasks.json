@@ -1,0 +1,89 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label":          "project: install",
+            "type":           "shell",
+            "command":        "make install",
+            "problemMatcher": []
+        },
+        {
+            "label":          "project: update",
+            "type":           "shell",
+            "command":        "make update",
+            "problemMatcher": []
+        },
+        {
+            "label":          "elixir: web",
+            "type":           "shell",
+            "command":        "make web",
+            "problemMatcher": []
+        },
+        {
+            "label":          "elixir: repl",
+            "type":           "shell",
+            "command":        "make repl",
+            "problemMatcher": []
+        },
+        {
+            "label":          "make: test",
+            "type":           "shell",
+            "command":        "make test",
+            "problemMatcher": []
+        },
+        {
+            "label":          "make: format",
+            "type":           "shell",
+            "command":        "make format",
+            "problemMatcher": []
+        },
+        {
+            "label":          "git: main",
+            "type":           "shell",
+            "command":        "make main",
+            "problemMatcher": []
+        },
+        {
+            "label":          "git: shadow",
+            "type":           "shell",
+            "command":        "make shadow",
+            "problemMatcher": []
+        },
+        {
+            "label":          "django: runserver",
+            "type":           "shell",
+            "command":        "make runserver",
+            "problemMatcher": []
+        },
+        {
+            "label":          "django: makemigrations",
+            "type":           "shell",
+            "command":        "make makemigrations",
+            "problemMatcher": []
+        },
+        {
+            "label":          "django: migrate",
+            "type":           "shell",
+            "command":        "make migrate",
+            "problemMatcher": []
+        },
+        {
+            "label":          "django: createsuperuser",
+            "type":           "shell",
+            "command":        "make createsuperuser",
+            "problemMatcher": []
+        },
+        {
+            "label":          "django: dumpdata",
+            "type":           "shell",
+            "command":        "make dumpdata",
+            "problemMatcher": []
+        },
+        {
+            "label":          "django: loaddata",
+            "type":           "shell",
+            "command":        "make loaddata",
+            "problemMatcher": []
+        },
+    ]
+}

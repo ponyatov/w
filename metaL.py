@@ -1,28 +1,86 @@
-import os,sys,re
+import config
 
-dirs = ['.','.vscode','bin','doc','lib','src','tmp','test']
+import os, sys, re
+import datetime as dt
 
-files = ['README.md','Makefile','apt.dev','apt.txt']
+MODULE = os.getcwd().split('/')[-1]
 
-merge = files +['.gitignore']
 
-json = ['settings','tasks','launch','extensions']
+## base object graph node = frame
+class Object:
+    def __init__(self, V):
+        ## scalar value: name, number, string,..
+        self.value = V
+        ## associative array = namespace = map
+        self.slot = {}
+        ## ordered container = vector = stack = queue = AST
+        self.nest = []
+        ## global unical id
+        self.gid = id(self)
 
-files += map(lambda j:f'.vscode/{j}.json',json)
 
-gitz = ['*~','*.swp','*.log','','/lib/python*/']
+class Primitive(Object): pass
 
-def giti(d):
-    if d in ['.vscode']: return
-    with open(f'{d}/.gitignore','w') as F:
-        if d == '.': map(F.write,gitz)
-        if d in ['bin','tmp']: F.write('*\n')
-        F.write(f'!.gitignore\n')
+## a.k.a. atom, keyword, symbol
+class Name(Primitive): pass
 
-for d in dirs:
-    try: os.mkdir(d)
-    except FileExistsError: pass
-    finally: giti(d)
+class String(Primitive): pass
 
-for f in files:
-    with open(f,'w') as F: pass
+class Number(Primitive): pass
+
+class Integer(Number): pass
+
+## machine hexadecimal number
+class Hex(Integer): pass
+
+## binary string
+class Bin(Integer): pass
+
+
+## EDS: Executable Data Structure (c)
+class Active(Object): pass
+
+## function
+class Fn(Active): pass
+
+
+class Meta(Object): pass
+
+class Module(Meta): pass
+
+class Class(Meta): pass
+
+class Method(Meta, Fn): pass
+
+
+class IO(Object): pass
+
+class Time(IO): pass
+
+class Path(IO): pass
+
+class Dir(IO): pass
+
+class File(IO): pass
+
+
+class Net(IO): pass
+
+class Socket(Net): pass
+
+class IP(Net): pass
+
+class Port(Net): pass
+
+
+class Web(Net): pass
+
+class Engine(Web):
+    def __init__(self, V='Flask'): super().__init__(V)
+
+
+## HTML blocked
+class HTML(Web): pass
+
+## HTML inline
+class HTMLI(Web): pass

@@ -1,0 +1,5 @@
+#!/bin/sh
+git gui &
+excode . &
+git fetch --all
+git pull -v

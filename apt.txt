@@ -1,0 +1,6 @@
+git make curl
+python3 python3-venv
+sqlite3 libsqlite3-mod-spatialite
+erlang-dev elixir npm
+postgresql-12 postgresql-client-12
+openjdk-11-jre

@@ -1,0 +1,5 @@
+Django
+spatialite pysqlite3-binary
+Flask
+Flask-SocketIO
+ply

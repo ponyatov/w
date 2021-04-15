@@ -2,4 +2,26 @@
 *.swp
 *.log
 
+/bully/
+
+# Python
+
+*.pyc
+/pyvenv.cfg
+/lib/python*/
+/lib64
+/share/python*/
+/include/site/python*/
+/__pycache__/
+
+# Erlang/Elixir
+
+*.beam
+/erl_crash.dump
+/_build/
+/deps/
+/mix.lock
+/assets/node_modules/
+/priv/static/
+
 !.gitignore

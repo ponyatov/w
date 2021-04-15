@@ -1,0 +1,92 @@
+{
+    // \ py
+    "python.pythonPath"              : "./bin/python3",
+    "python.formatting.provider"     : "autopep8",
+    "python.formatting.autopep8Path" : "./bin/autopep8",
+    "python.formatting.autopep8Args" : ["--ignore=E26,E302,E401,E402,E701,E702"],
+    // / py
+
+    // \ multi
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.f11",
+            "sequence": [
+                "workbench.action.files.saveAll",
+                {"command": "workbench.action.terminal.sendSequence",
+                    // "args": {"text": "\u000D clear ; make web \u000D"}}
+                    "args": {"text": "\u000D clear ; make runserver \u000D"}}
+                    // "args": {"text": "\u000D clear ; make test \u000D"}}
+                    // "args": {"text": "\u000D clear ; make repl \u000D"}}
+            ]
+        },
+        {
+            "command": "multiCommand.f12",
+            "sequence": [
+                "workbench.action.files.saveAll",
+                {"command": "workbench.action.terminal.sendSequence",
+                    "args": {"text": "\u000D clear ; make format \u000D"}}
+                    // "args": {"text": "\u000D clear ; make all \u000D"}}
+                    // "args": {"text": "\u000D System.stop \u000D"}}
+            ]
+        },
+    ],
+    // / multi
+
+    // \ files
+    "files.watcherExclude": {
+        "**/docs/**":true,
+        // \ python
+        "**/bin/**":true,
+        "**/__pycache__/**":true, "**/.pytest_cache/**":true,
+        "**/lib/python*/**":true, "**/lib64/**":true,
+        "**/share/**":true, "**/include/site/**":true,
+        "**/pyvenv.cfg":true, "**/*.pyc":true,
+        // / python
+        // \ droid
+        // / droid
+        // \ erlang
+        "**/_build/**":true, "**/deps/**":true,
+        "**/target/**":true, "**/.elixir_ls/**":true,
+        "**/.formatter.exs": true, "**/mix.lock": true,
+        // / erlang
+    },
+    "files.exclude": {
+        "**/docs/**":true,
+        // \ python
+        "**/bin/activate*":true,
+        "**/bin/python*":true,
+        "**/bin/pip*":true,
+        "**/bin/autopep8":true,
+        "**/bin/easy*":true,
+        "**/bin/pycodestyle":true,
+        "**/bin/flask":true,
+        "**/bin/django-admin*":true,
+        "**/bin/sqlformat":true,
+        "**/__pycache__/**":true, "**/.pytest_cache/**":true,
+        "**/lib/python*/**":true, "**/lib64/**":true,
+        "**/share/**":true, "**/include/site/**":true,
+        "**/pyvenv.cfg":true, "**/*.pyc":true,
+        // / python
+        // \ droid
+        // / droid
+        // \ erlang
+        "**/_build/**":true, "**/deps/**":true,
+        "**/target/**":true, "**/.elixir_ls/**":true,
+        "**/.formatter.exs": true, "**/mix.lock": true,
+        // / erlang
+    },
+    "files.associations": {
+        "*rc": "shellscript",
+        "requirements.*": "config",
+        // "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+    // / files
+
+    // \ editor
+    "editor.tabSize": 4,
+    "editor.rulers": [80],
+    "workbench.tree.indent": 32,
+    // / editor
+    "elixirLS.fetchDeps": false,
+    "browser-preview.startUrl": "127.0.0.1:12345/"
+}

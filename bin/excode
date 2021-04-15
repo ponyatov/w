@@ -1,0 +1,2 @@
+#!/bin/sh
+cgexec -g memory:code code $1 $2 $3 $4 $5 &

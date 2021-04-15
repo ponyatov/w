@@ -1,0 +1,15 @@
+{
+	"recommendations": [
+		"ryuta46.multi-command",
+		"stkb.rewrap",
+		"auchenberg.vscode-browser-preview",
+		// "ms-azuretools.vscode-docker",
+		// "tabnine.tabnine-vscode",
+		"tht13.python",
+		// "ms-python.python",
+		"pgourlain.erlang",
+		"jakebecker.elixir-ls",
+		// "valentin.beamdasm",
+		"redhat.java",
+	]
+}
