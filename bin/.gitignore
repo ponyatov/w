@@ -1,12 +1,4 @@
-activate*
-python*
-pip*
-autopep8
-easy*
-activate*
-pycodestyle
-flask
-django-admin*
-sqlformat
-chardetect
+*
+!ex*
+!*rc
 !.gitignore

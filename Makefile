@@ -50,7 +50,12 @@ S      += $(Y) $(E) $(X)
 # \ all
 .PHONY: all
 all: $(PY) metaL.py
-	$^
+	$^ $@
+.PHONY: shell
+shell: $(PY) metaL.py
+	$^ $@
+	stty echo
+	$(MAKE) $@
 
 .PHONY: repl
 repl:

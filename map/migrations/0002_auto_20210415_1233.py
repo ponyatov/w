@@ -14,11 +14,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='area',
             name='area',
-            field=django.contrib.gis.db.models.fields.PolygonField(blank=True, null=True, srid=4326),
+            field=django.contrib.gis.db.models.fields.PolygonField(
+                blank=True, null=True, srid=4326),
         ),
         migrations.AddField(
             model_name='loc',
             name='loc',
-            field=django.contrib.gis.db.models.fields.PointField(blank=True, null=True, srid=4326),
+            field=django.contrib.gis.db.models.fields.PointField(
+                blank=True, null=True, srid=4326),
         ),
     ]

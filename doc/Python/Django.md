@@ -22,6 +22,8 @@ bin/python3 manage.py startapp user
 
 ## GeoDjango
 
+* https://realpython.com/location-based-app-with-geodjango-tutorial/
+
 * https://docs.djangoproject.com/en/3.1/ref/contrib/gis/
     * https://docs.djangoproject.com/en/3.1/ref/contrib/gis/install/spatialite/
 * https://www.paulox.net/2020/12/08/maps-with-django-part-1-geodjango-spatialite-and-leaflet/    

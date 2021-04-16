@@ -10,6 +10,8 @@ class Area(models.Model):
         verbose_name = 'регион'
         verbose_name_plural = 'регионы'
 
+    def __str__(self): return f'{self.name}'
+
 ## geoLocation
 class Loc(models.Model):
     name = models.CharField(max_length=0x22, verbose_name='локация')
@@ -18,3 +20,5 @@ class Loc(models.Model):
     class Meta:
         verbose_name = 'локация'
         verbose_name_plural = 'локации'
+
+    def __str__(self): return f'{self.name}'

@@ -85,5 +85,11 @@
             "command":        "make loaddata",
             "problemMatcher": []
         },
+        {
+            "label":          "metaL: shell",
+            "type":           "shell",
+            "command":        "make shell",
+            "problemMatcher": []
+        },
     ]
 }

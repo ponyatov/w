@@ -29,6 +29,15 @@
                     // "args": {"text": "\u000D System.stop \u000D"}}
             ]
         },
+        {
+            "command": "multiCommand.f9",
+            "sequence": [
+                "workbench.action.files.saveAll",
+                {"command": "workbench.action.tasks.runTask",
+                    "args": "metaL: shell"}
+                    // "args": {"text": "\u000D clear ; make format \u000D"}}
+            ]
+        },
     ],
     // / multi
 
