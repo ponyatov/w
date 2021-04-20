@@ -2,7 +2,7 @@
 *.swp
 *.log
 
-/bully/
+/docs/
 
 # Python
 
@@ -17,10 +17,12 @@
 # Erlang/Elixir
 
 *.beam
+*.crashdump
 /erl_crash.dump
-/_build/
-/deps/
-/mix.lock
+_build/
+deps/
+rebar.lock
+mix.lock
 /assets/node_modules/
 /priv/static/
 

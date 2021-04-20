@@ -35,14 +35,20 @@ JAVAC   = javac
 
 # \ src
 P      += config.py
-Y      += metaL.py test/metaL.py
-Y      += $(shell find project -type f -regex ".+.py$$")
-Y      += $(shell find user    -type f -regex ".+.py$$")
-Y      += $(shell find map     -type f -regex ".+.py$$")
+Y      += metaL.py test_metaL.py
+Y      += $(shell find project   -type f -regex ".+.py$$")
+Y      += $(shell find app       -type f -regex ".+.py$$")
+Y      += $(shell find user      -type f -regex ".+.py$$")
+Y      += $(shell find landing   -type f -regex ".+.py$$")
+Y      += $(shell find book      -type f -regex ".+.py$$")
+Y      += $(shell find map       -type f -regex ".+.py$$")
+Y      += $(shell find bully     -type f -regex ".+.py$$")
 Y      += manage.py
-E      += $(shell find src     -type f -regex ".+.erl$$")
-X      += $(shell find lib     -type f -regex ".+.ex$$")
-X      += $(shell find config  -type f -regex ".+.exs$$")
+E      += $(shell find src       -type f -regex ".+.erl$$")
+X      += $(shell find lib       -type f -regex ".+.ex$$")
+X      += $(shell find config    -type f -regex ".+.exs$$")
+X      += $(shell find priv/repo -type f -regex ".+.exs$$")
+X      += $(shell find priv/psql -type f -regex ".+.exs$$")
 X      += .formatter.exs mix.exs
 S      += $(Y) $(E) $(X)
 # / src
@@ -72,7 +78,19 @@ tmp/format_py: $(Y)
 	$(PEP) --ignore=E26,E302,E401,E402,E701,E702 --in-place $? && touch $@
 tmp/format_ex: $(E) $(X)
 	$(MIX) format && touch $@
+
+.PHONY: test
+test: $(PYT) test_metaL.py
+	$^
+	$(MAKE) format
+
 # / all
+
+# \ eggs
+.PHONY: lisp
+lisp: $(PY) lis.py
+	$^ $@
+# / eggs
 
 # \ django
 HOST = 127.0.0.1
@@ -82,9 +100,14 @@ PORT = 12345
 runserver: $(PY) manage.py
 	$^ $@ $(HOST):$(PORT)
 
+.PHONY: livereload
+livereload: $(PY) manage.py
+	$^ $@
+
 .PHONY: makemigrations
 makemigrations: $(PY) manage.py
 	$^ $@
+	$(MAKE) migrate
 
 .PHONY: migrate
 migrate: $(PY) manage.py
@@ -96,16 +119,44 @@ createsuperuser: $(PY) manage.py
 
 .PHONY: dumpdata
 dumpdata: $(PY) manage.py
-	$^ $@ --format json --indent 2 > fixture/$@.json
+	$^ $@ --format json --indent 2 > tmp/$@.json
 
+FIXTURE = $(shell find fixture -type f -regex ".+.json$$")
 .PHONY: loaddata
 loaddata: $(PY) manage.py
-	$^ $@ fixture/user.json fixture/group.json
+	$^ $@ $(FIXTURE)
 # / django
 
 # \ doc
 .PHONY: doc
-doc:
+doc: \
+	doc/Erlang/LYSE_ru.pdf doc/Erlang/Armstrong_ru.pdf \
+	doc/Erlang/beam-book.pdf doc/Erlang/core_erlang-1.0.3.pdf \
+	doc/Erlang/FermVM.pdf \
+	doc/Erlang/ElixirInAction.pdf doc/Erlang/Phoenix.pdf \
+	doc/Nim/NimInAction.pdf
+
+doc/Erlang/LYSE_ru.pdf:
+	$(CURL) $@ https://github.com/mpyrozhok/learnyousomeerlang_ru/raw/master/pdf/learnyousomeerlang_ru.pdf
+doc/Erlang/Armstrong_ru.pdf:
+	$(CURL) $@ https://github.com/dyp2000/Russian-Armstrong-Erlang/raw/master/pdf/fullbook.pdf
+doc/Erlang/ElixirInAction.pdf:
+	$(CURL) $@ https://github.com/levunguyen/CGDN-Ebooks/raw/master/Java/Elixir%20in%20Action%2C%202nd%20Edition.pdf
+doc/Erlang/Phoenix.pdf:
+	$(CURL) $@ http://www.r-5.org/files/books/computers/languages/erlang/phoenix/Chris_McCord_Bruce_Tate_Jose_Valim-Programming_Phoenix-EN.pdf
+doc/Erlang/beam-book.pdf:
+	$(CURL) $@ https://github.com/happi/theBeamBook/releases/download/0.0.14/beam-book.pdf
+doc/Erlang/core_erlang-1.0.3.pdf:
+	$(CURL) $@ https://www.it.uu.se/research/group/hipe/cerl/doc/core_erlang-1.0.3.pdf
+doc/Erlang/FermVM.pdf:
+	$(CURL) $@ http://uu.diva-portal.org/smash/get/diva2:428121/FULLTEXT01.pdf
+
+doc/Nim/NimInAction.pdf:
+	$(CURL) $@ https://nim.nosdn.127.net/MTY3NjMzODI=/bmltd18wXzE1NzYxNTc0NDQwMTdfMWU4MDhiODUtZDM0Ni00OWFlLWJjYzUtMDg2ODIxMmMzMTIw
+
+.PHONY: doxy
+doxy: $(S)
+	doxygen doxy.gen 1> /dev/null
 # / doc
 
 # \ install
@@ -115,6 +166,7 @@ install: $(OS)_install js doc
 	$(MAKE) createsuperuser
 	$(MIX)  deps.get
 	$(MAKE) rebar
+	cd assets ; npm install
 	$(MAKE) update
 	$(MIX)  archive.install hex phx_new 1.5.8
 #	$(MIX)  ecto.create
@@ -123,12 +175,13 @@ install: $(OS)_install js doc
 update: $(OS)_update
 	$(PIP)   install -U    pip autopep8
 	$(PIP)   install -U -r requirements.txt
-	$(MAKE)  migrate
+	$(MAKE)  migrate loaddata
 	$(REBAR) update
 	$(MIX)   local.hex local.rebar
 	$(MIX)   deps.get
 	$(MIX)   deps.compile
 	$(MIX)   deps.update --all
+	cd assets ; npm run deploy
 
 .PHONY: Linux_install Linux_update
 Linux_install Linux_update:
@@ -162,7 +215,7 @@ $(REBAR):
 MERGE += README.md Makefile .gitignore apt.txt apt.dev LICENSE $(S)
 MERGE += .vscode bin doc lib src test tmp
 MERGE += requirements.txt
-MERGE += mix.exs .formatter.exs
+MERGE += mix.exs .iex.exs .formatter.exs
 MERGE += gis
 
 .PHONY: main

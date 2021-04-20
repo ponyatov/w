@@ -24,7 +24,8 @@
             "sequence": [
                 "workbench.action.files.saveAll",
                 {"command": "workbench.action.terminal.sendSequence",
-                    "args": {"text": "\u000D clear ; make format \u000D"}}
+                    "args": {"text": "\u000D clear ; make test \u000D"}}
+                    // "args": {"text": "\u000D clear ; make format \u000D"}}
                     // "args": {"text": "\u000D clear ; make all \u000D"}}
                     // "args": {"text": "\u000D System.stop \u000D"}}
             ]
@@ -88,6 +89,8 @@
         "*rc": "shellscript",
         "requirements.*": "config",
         // "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+        "*.core": "erlang",
+        "*.app.src": "erlang",
     },
     // / files
 

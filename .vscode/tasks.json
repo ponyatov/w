@@ -38,6 +38,12 @@
             "problemMatcher": []
         },
         {
+            "label":          "doc: doxygen",
+            "type":           "shell",
+            "command":        "make doxy",
+            "problemMatcher": []
+        },
+        {
             "label":          "git: main",
             "type":           "shell",
             "command":        "make main",
@@ -53,6 +59,12 @@
             "label":          "django: runserver",
             "type":           "shell",
             "command":        "make runserver",
+            "problemMatcher": []
+        },
+        {
+            "label":          "django: livereload",
+            "type":           "shell",
+            "command":        "make livereload",
             "problemMatcher": []
         },
         {
@@ -91,5 +103,14 @@
             "command":        "make shell",
             "problemMatcher": []
         },
+        {
+            "type":           "npm",
+            "script":         "watch",
+            "path":           "assets/",
+            "group":          "build",
+            "problemMatcher": [],
+            "label":          "npm: watch - assets",
+            "detail":         "webpack --mode development --watch"
+        }
     ]
 }

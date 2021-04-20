@@ -11,5 +11,6 @@
 		"jakebecker.elixir-ls",
 		// "valentin.beamdasm",
 		"redhat.java",
+		// "adelphes.android-dev-ext",
 	]
 }

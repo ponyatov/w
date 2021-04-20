@@ -61,13 +61,15 @@ class Object:
     def keys(self): return sorted(self.slot.keys())
 
     def __getitem__(self, key):
-        assert isinstance(key, str)
-        return self.slot[key]
+        if isinstance(key, str): return self.slot[key]
+        if isinstance(key, int): return self.nest[key]
+        raise TypeError([f'A[key:{key.__class__.__name__}]=B', key, self])
 
     def __setitem__(self, key, that):
-        assert isinstance(key, str)
         that = self.box(that)
-        self.slot[key] = that; return self
+        if isinstance(key, str): self.slot[key] = that; return self
+        if isinstance(key, int): self.nest[key] = that; return self
+        raise TypeError([f'A[key:{key.__class__.__name__}]=B', key, self])
 
     def __lshift__(self, that):
         that = self.box(that)

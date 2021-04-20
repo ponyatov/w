@@ -1,6 +1,7 @@
 # Django
 
 * https://django-book.readthedocs.io/en/latest
+* Aleksey Belkin [учебник Django](https://www.youtube.com/playlist?list=PLrgHtaQ10vi3xalWI7q6Uzr7aZUNT0BJH)
 
 
 ```
@@ -33,3 +34,10 @@ bin/python3 manage.py startapp user
 * https://www.gaia-gis.it/fossil/libspatialite/index
     * http://www.gaia-gis.it/gaia-sins/spatialite-cookbook/index.html
 * https://www.xl-optim.com/spatialite-and-python-in-2020/
+
+
+## Forms
+
+### AJAX
+
+* https://realpython.com/django-and-ajax-form-submissions/
