@@ -36,7 +36,11 @@ defmodule WWeb.Router do
 
     scope "/" do
       pipe_through :browser
-      live_dashboard "/dashboard", metrics: WWeb.Telemetry
+
+      # live_dashboard "/dashboard",
+      #   metrics: WWeb.Telemetry
+      #   # , W.Weather]
+      #   # ecto_repos: [W.Psql]
     end
   end
 end

@@ -4,30 +4,55 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>W · Phoenix Framework</title>
+    <title>metaL</title>
+    <link rel="shortcut icon" href="<%= Routes.static_path(@conn, "/images/logo.png") %>" type="image/png">
+    <link rel="stylesheet" href="<%= Bootstrap.dark_css %>"/>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= Bootstrap.jquery_js %>"></script>
+    <script src="<%= Bootstrap.popper_js %>"></script>
   </head>
   <body>
-    <header>
-      <section class="container">
-        <nav role="navigation">
+    <div class="container">
+      <header class="navbar fixed-top bg-dark py-0">
+        <%# <section class="container"> %>
+          <%# <nav role="navigation"></nav> %>
+          <img class="nav-logo" src="<%= Routes.static_path(@conn, "/images/logo.png") %>" alt="Logo"/>
           <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
             <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
+              <li class="nav-item"><%= link "LiveDashboard", to: Routes.live_dashboard_path(@conn, :home) %></li>
             <% end %>
           </ul>
-        </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
-    </header>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= @inner_content %>
-    </main>
+        <%# </section> %>
+      </header>
+      <main role="main" class="container">
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <%= @inner_content %>
+      </main>
+      <footer class="navbar fixed-bottom bg-dark py-0">
+          <%# <a href="https://phoenixframework.org/" > %>
+            <img class="phx-logo" src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
+          <%# </a> %>
+          <div class="btn-group">
+              <button class="nav-item btn btn-secondary"><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></button>
+            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+              <button class="nav-item btn btn-secondary"><%= link "Dashboard", to: Routes.live_dashboard_path(@conn, :home) %></button>
+            <% end %>
+              <button id="localtime" class="nav-item btn btn-info">date | time</button>
+          </div>
+      </footer>
+    </div>
   </body>
+    <script src="<%= Bootstrap.bootstrap_js %>"></script>
+    <script>
+      function marginz() {
+        $('body')
+          .css('margin-top',    1.1 * $('header').outerHeight())
+          .css('margin-bottom', 0.7 * $('footer').outerHeight())
+      }
+
+      $(window).on('load',   function(){ marginz(); })
+      $(window).on('resize', function(){ marginz(); })
+    </script>
 </html>

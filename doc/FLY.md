@@ -21,7 +21,13 @@
     * code snippets are fastest to use /`meld`-like tools/
     * parametric code templating: can be effective but needs too large efforts to implement
 * metaprogramming: don't! #metaL and #Lisp
-    
+    * the problem is metasystem complexity rises much more faster than target application code
+* modifying software is easy
+    * any system must be rewritten few times by adapting it from drafts to real needs
+    * the working draft can be enough even before the MVP shows itself ready
+    * customer requirements always change faster than your progress, does not matter how you are sparks
+
+
 
 As soon as I stop to think about the code and architecture, everything became
 clear, and I become to write any service like a demon.

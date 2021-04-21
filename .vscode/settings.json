@@ -14,8 +14,8 @@
                 "workbench.action.files.saveAll",
                 {"command": "workbench.action.terminal.sendSequence",
                     // "args": {"text": "\u000D clear ; make web \u000D"}}
-                    "args": {"text": "\u000D clear ; make runserver \u000D"}}
-                    // "args": {"text": "\u000D clear ; make test \u000D"}}
+                    // "args": {"text": "\u000D clear ; make runserver \u000D"}}
+                    "args": {"text": "\u000D clear ; make test \u000D"}}
                     // "args": {"text": "\u000D clear ; make repl \u000D"}}
             ]
         },
@@ -24,8 +24,8 @@
             "sequence": [
                 "workbench.action.files.saveAll",
                 {"command": "workbench.action.terminal.sendSequence",
-                    "args": {"text": "\u000D clear ; make test \u000D"}}
-                    // "args": {"text": "\u000D clear ; make format \u000D"}}
+                    // "args": {"text": "\u000D clear ; make test \u000D"}}
+                    "args": {"text": "\u000D clear ; make format \u000D"}}
                     // "args": {"text": "\u000D clear ; make all \u000D"}}
                     // "args": {"text": "\u000D System.stop \u000D"}}
             ]

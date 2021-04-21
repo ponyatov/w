@@ -50,7 +50,10 @@ X      += $(shell find config    -type f -regex ".+.exs$$")
 X      += $(shell find priv/repo -type f -regex ".+.exs$$")
 X      += $(shell find priv/psql -type f -regex ".+.exs$$")
 X      += .formatter.exs mix.exs
-S      += $(Y) $(E) $(X)
+E      += $(shell find grappa    -type f -regex ".+.erl$$")
+G4     += $(shell find grappa    -type f -regex ".+.g4$$")
+Y      += grappa/src/CoreErlang.py
+S      += $(Y) $(E) $(X) $(G4)
 # / src
 
 # \ all
@@ -85,12 +88,6 @@ test: $(PYT) test_metaL.py
 	$(MAKE) format
 
 # / all
-
-# \ eggs
-.PHONY: lisp
-lisp: $(PY) lis.py
-	$^ $@
-# / eggs
 
 # \ django
 HOST = 127.0.0.1

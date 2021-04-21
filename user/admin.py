@@ -12,6 +12,10 @@ class RoomAdmin(admin.ModelAdmin):
 class DeptAdmin(admin.ModelAdmin):
     pass # todo filter_horizontal
 
+@admin.register(Position)
+class PositionAdmin(admin.ModelAdmin):
+    pass
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = [

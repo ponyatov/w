@@ -1,13 +1,7 @@
 use Mix.Config
 
 # Configure your database
-config :w, W.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "w_dev",
-  hostname: "localhost",
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+config :w, W.Repo, database: "tmp/dev_ex.db"
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -16,7 +10,7 @@ config :w, W.Repo,
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :w, WWeb.Endpoint,
-  http: [port: 4000],
+  # http: [port: 54321],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -66,7 +60,7 @@ config :w, WWeb.Endpoint,
   ]
 
 # Do not include metadata nor timestamps in development logs
-config :logger, :console, format: "[$level] $message\n"
+# config :logger, :console, format: "[$level] $message\n"
 
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.

@@ -1,5 +1,9 @@
 Django
+django-livereload-server
+django-leaflet
+django-dark
 Flask
 Flask-SocketIO
 watchdog
+antlr4-python3-runtime
 ply

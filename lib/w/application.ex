@@ -8,13 +8,15 @@ defmodule W.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      W.Repo,
+      # W.Repo,
+      # W.Psql,
+      # W.Weather,
       # Start the Telemetry supervisor
-      WWeb.Telemetry,
+      # WWeb.Telemetry,
       # Start the PubSub system
-      {Phoenix.PubSub, name: W.PubSub},
+      {Phoenix.PubSub, name: W.PubSub}
       # Start the Endpoint (http/https)
-      WWeb.Endpoint
+      # WWeb.Endpoint
       # Start a worker by calling: W.Worker.start_link(arg)
       # {W.Worker, arg}
     ]

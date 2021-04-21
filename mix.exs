@@ -20,8 +20,9 @@ defmodule W.MixProject do
   def application do
     [
       mod: {W.Application, []},
-      extra_applications: [:runtime_tools],
-      applications: [:logger, :os_mon]
+      # , :telemetry_metrics],
+      extra_applications: [],
+      applications: [:logger, :runtime_tools, :os_mon]
     ]
   end
 
@@ -38,16 +39,17 @@ defmodule W.MixProject do
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
       {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_live_reload, "~> 1.2", only: [:dev, :test]},
       {:phoenix_live_dashboard, "~> 0.4"},
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      # DB
+      # Postgres
       {:postgrex, ">= 0.0.0"},
       {:ecto_psql_extras, "~> 0.6.4"},
+      # SQLite
       {:ecto_sqlite3, "~> 0.5.4"},
       # GIS
       {:exshape, "~> 2.2"}
